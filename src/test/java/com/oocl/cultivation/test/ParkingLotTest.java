@@ -22,11 +22,12 @@ public class ParkingLotTest {
     @Test
     void should_return_car_when_fetch_given_parking_ticket() {
         //given
-        Ticket ticket=new Ticket();
-        //when
+        Car car=new Car();
         ParkingLot parkingLot=new ParkingLot();
-        Car car=parkingLot.fetch(ticket);
+        Ticket ticket=parkingLot.park(car);
+        //when
+        Car car2=parkingLot.fetch(ticket);
         //then
-        assertNotNull(car);
+        assertNotNull(car2);
     }
 }
