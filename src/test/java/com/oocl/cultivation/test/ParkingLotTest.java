@@ -26,8 +26,8 @@ public class ParkingLotTest {
         ParkingLot parkingLot=new ParkingLot();
         Ticket ticket=parkingLot.park(car);
         //when
-        Car car2=parkingLot.fetch(ticket);
+        Car fetchedCar=parkingLot.fetch(ticket);
         //then
-        assertNotNull(car2);
+        assertNotNull(fetchedCar);
     }
 }
