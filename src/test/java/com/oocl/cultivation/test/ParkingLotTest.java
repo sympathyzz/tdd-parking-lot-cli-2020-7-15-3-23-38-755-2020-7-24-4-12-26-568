@@ -64,8 +64,8 @@ public class ParkingLotTest {
         ParkingLot parkingLot=new ParkingLot();
         Ticket ticket=parkingLot.park(car);
         //when
-        parkingLot.fetch(ticket);
+        Car fetchecCar=parkingLot.fetch(ticket);
         //then
-        assertNull(ticket);
+        assertNull(fetchecCar);
     }
 }
