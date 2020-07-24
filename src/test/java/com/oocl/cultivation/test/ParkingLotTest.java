@@ -34,15 +34,17 @@ public class ParkingLotTest {
     @Test
     void should_return_correspond_car_when_fetch_given_correspond_ticket() {
         //given
-        Car car=new Car();
+        Car car1=new Car();
         ParkingLot parkingLot=new ParkingLot(10);
-        Ticket ticket1=parkingLot.park(car);
+        Ticket ticket1=parkingLot.park(car1);
         Car car2=new Car();
         Ticket ticket2=parkingLot.park(car2);
         //when
         Car fetchedCar1=parkingLot.fetch(ticket1);
         Car fetchedCar2=parkingLot.fetch(ticket2);
         //then
+        assertEquals(car1,fetchedCar1);
+        assertEquals(car2,fetchedCar2);
         assertNotEquals(fetchedCar1,fetchedCar2);
     }
 

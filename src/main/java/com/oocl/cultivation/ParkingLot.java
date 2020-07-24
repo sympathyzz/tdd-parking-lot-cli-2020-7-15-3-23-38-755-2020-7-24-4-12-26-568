@@ -12,17 +12,19 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        Ticket ticket = new Ticket();
-        parkingRooms.put(ticket, car);
-        return ticket;
+        if(parkingRooms.size()<capacity){
+            Ticket ticket = new Ticket();
+            parkingRooms.put(ticket, car);
+            return ticket;
+        }
+        return null;
     }
 
 
     public Car fetch(Ticket ticket) {
         Car car=null;
         if(parkingRooms.containsKey(ticket)){
-            car=parkingRooms.get(ticket);
-            parkingRooms.remove(ticket);
+            car=parkingRooms.remove(ticket);
         }
         return car;
     }
