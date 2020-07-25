@@ -202,7 +202,7 @@ public class ParkingBoyTest {
     void should_first_parkinglot_has_1_car__second_parkinglot_has_1_car_when_park_given_2_cars() {
         //given
         //when
-        SmartParkingBoy smartParkingBoy=new SmartParkingBoy();
+        SuperSmartParkingBoy smartParkingBoy=new SuperSmartParkingBoy();
         for(int i=0;i<2;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
