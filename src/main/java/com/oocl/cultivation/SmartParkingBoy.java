@@ -3,13 +3,13 @@ package com.oocl.cultivation;
 import java.util.*;
 
 public class SmartParkingBoy extends ParkingBoy{
-    private Map<Integer,Integer> parkingLotMap=new HashMap<>();
+    private Map<Integer,Integer> freeParkingLotNumberMap=new HashMap<>();
     public Ticket park(Car car, Customer customer) {
         for(int i=0;i<allParkingLot.size();i++){
             int freeParkingLotNumber=allParkingLot.get(i).getCapacity()-allParkingLot.get(i).getParkingRooms().size();
-            parkingLotMap.put(i,freeParkingLotNumber);
+            freeParkingLotNumberMap.put(i,freeParkingLotNumber);
         }
-        Collection<Integer> parkingLotMapValueCollection = parkingLotMap.values();
+        Collection<Integer> parkingLotMapValueCollection = freeParkingLotNumberMap.values();
         List<Integer> freeParkingLotNumberList = new ArrayList<>(parkingLotMapValueCollection);
         int maxFreeParkingLotNumber=freeParkingLotNumberList.get(0);
         int maxFreeParkingLotNumberKey=0;
