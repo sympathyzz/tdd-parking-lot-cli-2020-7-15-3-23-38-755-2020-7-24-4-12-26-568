@@ -115,6 +115,19 @@ public class ParkingBoyTest {
         assertThat(systemOut().endsWith("Unrecognized parking ticket.\n")).isTrue();
     }
 
+    @Test
+    void should_get_unrecognized_message_when_fetch_given_used_ticket() {
+        //given
+        Car car=new Car();
+        ParkingBoy parkingBoy=new ParkingBoy();
+        Ticket ticket=parkingBoy.park(car);;
+        parkingBoy.fetch(ticket);
+        //when
+        parkingBoy.fetch(ticket);
+        //then
+        assertThat(systemOut().endsWith("Unrecognized parking ticket.\n")).isTrue();
+    }
+
     private String systemOut() {
         return outContent.toString();
     }
