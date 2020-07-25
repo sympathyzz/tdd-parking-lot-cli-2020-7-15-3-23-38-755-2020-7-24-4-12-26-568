@@ -4,14 +4,14 @@ import com.oocl.cultivation.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
+
 
 
 public class ParkingBoyTest {
@@ -114,12 +114,11 @@ public class ParkingBoyTest {
         //given
         Car car=new Car();
         Customer customer=new Customer(car);
-        ParkingBoy mockedfetch= Mockito.mock(ParkingBoy.class);
-        given(mockedfetch.park(car,customer)).willReturn(null);
-        Ticket ticket=mockedfetch.park(car,customer);
         ParkingBoy parkingBoy=new ParkingBoy();
+        parkingBoy.park(car,customer);
+        customer.setTicket(null);
         //when
-        parkingBoy.fetch(ticket,customer);
+        parkingBoy.fetch(customer.getTicket(),customer);
         //then
         assertThat(systemOut().endsWith("Unrecognized parking ticket.\n")).isTrue();
     }

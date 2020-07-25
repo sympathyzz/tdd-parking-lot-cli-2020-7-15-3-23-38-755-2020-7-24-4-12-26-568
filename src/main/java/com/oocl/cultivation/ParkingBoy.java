@@ -8,6 +8,7 @@ public class ParkingBoy {
         if(parkingLot.getParkingRooms().size()<parkingLot.getCapacity()){
             Ticket ticket = new Ticket(car);
             parkingLot.getParkingRooms().put(ticket, car);
+            car.setIsParking(true);
             customer.setTicket(ticket);
             return ticket;
         }
@@ -20,19 +21,25 @@ public class ParkingBoy {
         if(parkingLot.getParkingRooms().containsKey(ticket)){
             car=parkingLot.getParkingRooms().remove(ticket);
             customer.setTicket(null);
+            customer.getCar().setIsParking(false);
         }
         sendMessage(ticket,customer);
         return car;
     }
 
     private void sendMessage(Ticket ticket,Customer customer) {
-        if(customer.getTicket()!=null){
-            if(ticket==null){
-                System.out.print("Please provide your parking ticket.\n");
+        if(customer.getCar().getIsParking()){
+            if(customer.getTicket()!=null){
+                if(ticket==null){
+                    System.out.print("Please provide your parking ticket.\n");
+                }
+            }else {
+                System.out.print("Unrecognized parking ticket.\n");
             }
-        }else {
+        }else if (ticket==null){
+            System.out.print("Not enough position.\n");
+        }else{
             System.out.print("Unrecognized parking ticket.\n");
         }
-
     }
 }
