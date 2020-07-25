@@ -3,22 +3,24 @@ package com.oocl.cultivation.test;
 import com.oocl.cultivation.*;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 
 
 public class ParkingBoyTest {
 
-    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    @Before
-    public void setup() {
+    @BeforeAll
+    public static void setup() {
         System.setOut(new PrintStream(outContent));
     }
 
@@ -110,7 +112,7 @@ public class ParkingBoyTest {
         //when
         parkingBoy.fetch(ticket);
         //then
-        assertEquals(true,systemOut().endsWith("I am Tom. I know Jerry become Leader of Class 2.\n"));
+        assertThat(systemOut().endsWith("Unrecognized parking ticket.\n")).isTrue();
     }
 
     private String systemOut() {

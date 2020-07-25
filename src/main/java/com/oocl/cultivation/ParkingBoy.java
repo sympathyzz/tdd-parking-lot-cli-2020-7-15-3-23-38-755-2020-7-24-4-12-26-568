@@ -18,6 +18,9 @@ public class ParkingBoy {
         if(parkingLot.getParkingRooms().containsKey(ticket)){
             car=parkingLot.getParkingRooms().remove(ticket);
         }
+        if(car==null){
+        System.out.print("Unrecognized parking ticket.\n");
+        }
         return car;
     }
 }
