@@ -2,7 +2,6 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -102,12 +101,12 @@ public class ParkingBoyTest {
     }
 
     @Test
-    void should_get_unrecognized_message_when_fetch_given_no_ticket() {
+    void should_get_unrecognized_message_when_fetch_given_no_ticket_from_parking_boy() {
         //given
         Car car=new Car();
         ParkingBoy mockedfetch= Mockito.mock(ParkingBoy.class);
         given(mockedfetch.park(car)).willReturn(null);
-        Ticket ticket=mockedfetch.park(car);;
+        Ticket ticket=mockedfetch.park(car);
         ParkingBoy parkingBoy=new ParkingBoy();
         //when
         parkingBoy.fetch(ticket);
@@ -126,6 +125,17 @@ public class ParkingBoyTest {
         parkingBoy.fetch(ticket);
         //then
         assertThat(systemOut().endsWith("Unrecognized parking ticket.\n")).isTrue();
+    }
+
+    @Test
+    void should_get_please_provide_ticket_message_when_fetch_given_no_ticket_by_customer() {
+        //given
+        Customer customer=new Customer(new Car());
+        ParkingBoy parkingBoy=new ParkingBoy();
+        //when
+        parkingBoy.fetch(customer.getTicket());
+        //then
+        assertThat(systemOut().endsWith("Please provide your parking ticket.\n")).isTrue();
     }
 
     private String systemOut() {
