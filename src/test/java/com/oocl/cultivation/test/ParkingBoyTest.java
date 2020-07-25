@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -98,7 +97,7 @@ public class ParkingBoyTest {
     void should_return_null_when_park_given_no_position() {
         //given
         ParkingBoy parkingBoy=new ParkingBoy();
-        for(int i=0;i<10;i++){
+        for(int i=0;i<20;i++){
             Car car=new Car();
             parkingBoy.park(car,new Customer(car));
         }
@@ -130,7 +129,7 @@ public class ParkingBoyTest {
         Car car=new Car();
         Customer customer=new Customer(car);
         ParkingBoy parkingBoy=new ParkingBoy();
-        Ticket ticket=parkingBoy.park(car,customer);;
+        Ticket ticket=parkingBoy.park(car,customer);
         parkingBoy.fetch(ticket,customer);
         //when
         parkingBoy.fetch(ticket,customer);
@@ -156,7 +155,7 @@ public class ParkingBoyTest {
     void should_get_not_enough_position_message_when_park_given_no_position() {
         //given
         ParkingBoy parkingBoy=new ParkingBoy();
-        for(int i=0;i<10;i++){
+        for(int i=0;i<20;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
             parkingBoy.park(car,customer);
@@ -180,8 +179,8 @@ public class ParkingBoyTest {
             parkingBoy.park(car,customer);
         }
         //then
-        assertEquals(10,parkinglots.get[0].getParkingRooms().size());
-        assertEquals(1,parkinglots.get[1].getParkingRooms().size());
+        assertEquals(10,parkingBoy.getAllParkingLot().get(0).getParkingRooms().size());
+        assertEquals(1,parkingBoy.getAllParkingLot().get(1).getParkingRooms().size());
     }
 
     private String systemOut() {

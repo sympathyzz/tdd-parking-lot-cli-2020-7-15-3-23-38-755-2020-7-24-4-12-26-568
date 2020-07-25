@@ -1,16 +1,32 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParkingBoy {
 
-    private ParkingLot parkingLot=new ParkingLot();
+    private  List<ParkingLot> allParkingLot=new ArrayList<>();
 
-    public Ticket park(Car car,Customer customer) {
-        if(parkingLot.getParkingRooms().size()<parkingLot.getCapacity()){
-            Ticket ticket = new Ticket(car);
-            parkingLot.getParkingRooms().put(ticket, car);
-            car.setIsParking(true);
-            customer.setTicket(ticket);
-            return ticket;
+    public List<ParkingLot> getAllParkingLot() {
+        return allParkingLot;
+    }
+
+    public ParkingBoy() {
+        ParkingLot parkingLot1=new ParkingLot(10);
+        ParkingLot parkingLot2=new ParkingLot(10);
+        allParkingLot.add(parkingLot1);
+        allParkingLot.add(parkingLot2);
+    }
+
+    public Ticket park(Car car, Customer customer) {
+        for(int i=0;i<allParkingLot.size();i++){
+            if(allParkingLot.get(i).getParkingRooms().size()<allParkingLot.get(i).getCapacity()){
+                Ticket ticket = new Ticket(car);
+                allParkingLot.get(i).getParkingRooms().put(ticket, car);
+                car.setIsParking(true);
+                customer.setTicket(ticket);
+                return ticket;
+            }
         }
         sendMessage(null,customer);
         return null;
@@ -18,10 +34,12 @@ public class ParkingBoy {
 
     public Car fetch(Ticket ticket,Customer customer) {
         Car car=null;
-        if(parkingLot.getParkingRooms().containsKey(ticket)){
-            car=parkingLot.getParkingRooms().remove(ticket);
-            customer.setTicket(null);
-            customer.getCar().setIsParking(false);
+        for(int i=0;i<allParkingLot.size();i++){
+            if(allParkingLot.get(i).getParkingRooms().containsKey(ticket)){
+                car=allParkingLot.get(i).getParkingRooms().remove(ticket);
+                customer.setTicket(null);
+                customer.getCar().setIsParking(false);
+            }
         }
         sendMessage(ticket,customer);
         return car;
