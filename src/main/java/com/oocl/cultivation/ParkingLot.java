@@ -15,8 +15,8 @@ public class ParkingLot {
         return parkingRooms;
     }
 
-    public ParkingLot(int capacity) {
-        this.capacity = capacity;
+    public ParkingLot() {
+        this.capacity = 10;
     }
 
 }

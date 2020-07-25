@@ -4,6 +4,9 @@ public class Customer {
     private Car car;
     private Ticket ticket;
 
+    public Customer(Car car) {
+        this.car = car;
+    }
 
     public Car getCar() {
         return car;
@@ -13,13 +16,11 @@ public class Customer {
         return ticket;
     }
 
-    public void parkCar(Car car){
-        ParkingBoy parkingBoy=new ParkingBoy();
-        this.ticket=parkingBoy.park(car);
+    public void setCar(Car car) {
+        this.car = car;
     }
 
-    public void fetchCar(Ticket ticket) {
-        ParkingBoy parkingBoy=new ParkingBoy();
-        this.car=parkingBoy.checkTicketToReturnCar(ticket);
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 }

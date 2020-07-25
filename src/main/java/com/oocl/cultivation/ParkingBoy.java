@@ -2,7 +2,7 @@ package com.oocl.cultivation;
 
 public class ParkingBoy {
 
-    private ParkingLot parkingLot;
+    private ParkingLot parkingLot=new ParkingLot();
 
     public Ticket park(Car car) {
         if(parkingLot.getParkingRooms().size()<parkingLot.getCapacity()){
@@ -13,7 +13,7 @@ public class ParkingBoy {
         return null;
     }
 
-    public Car checkTicketToReturnCar(Ticket ticket) {
+    public Car fetch(Ticket ticket) {
         Car car=null;
         if(parkingLot.getParkingRooms().containsKey(ticket)){
             car=parkingLot.getParkingRooms().remove(ticket);
