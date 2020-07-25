@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -166,6 +167,21 @@ public class ParkingBoyTest {
         parkingBoy.park(car,customer);
         //then
         assertThat(systemOut().endsWith("Not enough position.\n")).isTrue();
+    }
+
+    @Test
+    void should_first_parkinglot_full_second_parkinglot_has_1_car_when_park_given_11_cars() {
+        //given
+        //when
+        ParkingBoy parkingBoy=new ParkingBoy();
+        for(int i=0;i<11;i++){
+            Car car=new Car();
+            Customer customer=new Customer(car);
+            parkingBoy.park(car,customer);
+        }
+        //then
+        assertEquals(10,parkinglots.get[0].getParkingRooms().size());
+        assertEquals(1,parkinglots.get[1].getParkingRooms().size());
     }
 
     private String systemOut() {
