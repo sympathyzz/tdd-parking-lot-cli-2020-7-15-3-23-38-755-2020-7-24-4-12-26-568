@@ -30,17 +30,4 @@ public class SmartParkingBoy extends ParkingBoy{
         return null;
     }
 
-    public Car fetch(Ticket ticket,Customer customer) {
-        Car car=null;
-        for(int i=0;i<allParkingLot.size();i++){
-            if(allParkingLot.get(i).getParkingRooms().containsKey(ticket)){
-                car=allParkingLot.get(i).getParkingRooms().remove(ticket);
-                customer.setTicket(null);
-                customer.getCar().setIsParking(false);
-            }
-        }
-        sendMessage(ticket,customer);
-        return car;
-    }
-
 }
