@@ -66,7 +66,7 @@ public class ParkingBoyTest {
     @Test
     void should_return_null_when_fetch_given_wrong_ticket() {
         //given
-        Ticket ticket=new Ticket();
+        Ticket ticket=new Ticket(null);
         ParkingBoy parkingBoy=new ParkingBoy();
         //when
         Car fetchedCar=parkingBoy.fetch(ticket);
@@ -130,10 +130,12 @@ public class ParkingBoyTest {
     @Test
     void should_get_please_provide_ticket_message_when_fetch_given_no_ticket_by_customer() {
         //given
-        Customer customer=new Customer(new Car());
+        Car car=new Car();
         ParkingBoy parkingBoy=new ParkingBoy();
+        parkingBoy.park(car);
+        Ticket ticket=null;
         //when
-        parkingBoy.fetch(customer.getTicket());
+        parkingBoy.fetch(ticket);
         //then
         assertThat(systemOut().endsWith("Please provide your parking ticket.\n")).isTrue();
     }

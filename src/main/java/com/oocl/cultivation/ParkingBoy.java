@@ -6,7 +6,7 @@ public class ParkingBoy {
 
     public Ticket park(Car car) {
         if(parkingLot.getParkingRooms().size()<parkingLot.getCapacity()){
-            Ticket ticket = new Ticket();
+            Ticket ticket = new Ticket(car);
             parkingLot.getParkingRooms().put(ticket, car);
             return ticket;
         }
