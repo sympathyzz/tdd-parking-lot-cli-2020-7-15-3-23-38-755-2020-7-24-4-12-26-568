@@ -4,25 +4,27 @@ import java.util.*;
 
 public class SuperSmartParkingBoy extends ParkingBoy {
 
-    private Map<Integer,Integer> parkingLotMap=new HashMap<>();
+    private Map<Integer,Double> availablePositionRateMap=new HashMap<>();
     public Ticket park(Car car, Customer customer) {
         for(int i=0;i<allParkingLot.size();i++){
-            int freeParkingLotNumber=allParkingLot.get(i).getCapacity()-allParkingLot.get(i).getParkingRooms().size();
-            parkingLotMap.put(i,freeParkingLotNumber);
+            double freeParkingLotNumber=allParkingLot.get(i).getCapacity()-allParkingLot.get(i).getParkingRooms().size();
+            double totalCapacity=allParkingLot.get(i).getCapacity();
+            double availablePositionRate=freeParkingLotNumber/totalCapacity;
+            availablePositionRateMap.put(i,availablePositionRate);
         }
-        Collection<Integer> parkingLotMapValueCollection = parkingLotMap.values();
-        List<Integer> freeParkingLotNumberList = new ArrayList<>(parkingLotMapValueCollection);
-        int maxFreeParkingLotNumber=freeParkingLotNumberList.get(0);
-        int maxFreeParkingLotNumberKey=0;
-        for (int i=0;i<freeParkingLotNumberList.size();i++){
-            if (maxFreeParkingLotNumber<freeParkingLotNumberList.get(i)){
-                maxFreeParkingLotNumber=freeParkingLotNumberList.get(i);
-                maxFreeParkingLotNumberKey=i;
+        Collection<Double> availablePositionRateMapValueCollection = availablePositionRateMap.values();
+        List<Double> availablePositionRateList = new ArrayList<>(availablePositionRateMapValueCollection);
+        double maxAvailablePositionRate=availablePositionRateList.get(0);
+        int maxAvailablePositionRateKey=0;
+        for (int i=0;i<availablePositionRateList.size();i++){
+            if (maxAvailablePositionRate<availablePositionRateList.get(i)){
+                maxAvailablePositionRate=availablePositionRateList.get(i);
+                maxAvailablePositionRateKey=i;
             }
         }
-        if(maxFreeParkingLotNumber!=0){
+        if(maxAvailablePositionRate!=(double) 0){
             Ticket ticket = new Ticket(car);
-            allParkingLot.get(maxFreeParkingLotNumberKey).getParkingRooms().put(ticket, car);
+            allParkingLot.get(maxAvailablePositionRateKey).getParkingRooms().put(ticket, car);
             car.setIsParking(true);
             customer.setTicket(ticket);
             return ticket;
