@@ -1,11 +1,27 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
+
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+
 
 public class ParkingBoyTest {
+
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setup() {
+        System.setOut(new PrintStream(outContent));
+    }
+
     @Test
     void should_return_ticket_when_parkCar_given_car() {
         //given
@@ -73,7 +89,6 @@ public class ParkingBoyTest {
     @Test
     void should_return_null_when_park_given_no_position() {
         //given
-        ParkingLot parkingLot=new ParkingLot();
         ParkingBoy parkingBoy=new ParkingBoy();
         for(int i=0;i<10;i++){
             parkingBoy.park(new Car());
@@ -83,4 +98,23 @@ public class ParkingBoyTest {
         //then
         assertNull(ticket);
     }
+
+    @Test
+    void should_get_unrecognized_message_when_fetch_given_no_ticket() {
+        //given
+        Car car=new Car();
+        ParkingBoy mockedfetch= Mockito.mock(ParkingBoy.class);
+        given(mockedfetch.park(car)).willReturn(null);
+        Ticket ticket=mockedfetch.park(car);;
+        ParkingBoy parkingBoy=new ParkingBoy();
+        //when
+        parkingBoy.fetch(ticket);
+        //then
+        assertEquals(true,systemOut().endsWith("I am Tom. I know Jerry become Leader of Class 2.\n"));
+    }
+
+    private String systemOut() {
+        return outContent.toString();
+    }
+
 }
