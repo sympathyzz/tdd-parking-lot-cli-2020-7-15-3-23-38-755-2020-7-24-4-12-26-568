@@ -198,6 +198,21 @@ public class ParkingBoyTest {
         assertEquals(6,smartParkingBoy.getAllParkingLot().get(1).getParkingRooms().size());
     }
 
+    @Test
+    void should_first_parkinglot_has_1_car__second_parkinglot_has_1_car_when_park_given_2_cars() {
+        //given
+        //when
+        SmartParkingBoy smartParkingBoy=new SmartParkingBoy();
+        for(int i=0;i<2;i++){
+            Car car=new Car();
+            Customer customer=new Customer(car);
+            smartParkingBoy.park(car,customer);
+        }
+        //then
+        assertEquals(1,smartParkingBoy.getAllParkingLot().get(0).getParkingRooms().size());
+        assertEquals(1,smartParkingBoy.getAllParkingLot().get(1).getParkingRooms().size());
+    }
+
     private String systemOut() {
         return outContent.toString();
     }
