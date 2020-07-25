@@ -152,6 +152,23 @@ public class ParkingBoyTest {
         assertThat(systemOut().endsWith("Please provide your parking ticket.\n")).isTrue();
     }
 
+    @Test
+    void should_get_not_enough_position_message_when_park_given_no_position() {
+        //given
+        ParkingBoy parkingBoy=new ParkingBoy();
+        for(int i=0;i<10;i++){
+            Car car=new Car();
+            Customer customer=new Customer(car);
+            parkingBoy.park(car,customer);
+        }
+        Car car=new Car();
+        Customer customer=new Customer(car);
+        //when
+        parkingBoy.park(car,customer);
+        //then
+        assertThat(systemOut().endsWith("Not enough position.\n")).isTrue();
+    }
+
     private String systemOut() {
         return outContent.toString();
     }

@@ -11,6 +11,7 @@ public class ParkingBoy {
             customer.setTicket(ticket);
             return ticket;
         }
+        sendMessage(null,customer);
         return null;
     }
 
