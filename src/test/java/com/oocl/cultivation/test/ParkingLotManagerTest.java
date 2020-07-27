@@ -10,8 +10,10 @@ public class ParkingLotManagerTest {
     @Test
     void management_list_size_is_2_when_add_parking_boy_given_2_parking_boy(){
         //given
-        ParkingBoy parkingBoy1 = new ParkingBoy();
-        ParkingBoy parkingBoy2 = new ParkingBoy();
+        int parkingBoy1Id=1;
+        int parkingBoy2Id=2;
+        ParkingBoy parkingBoy1 = new ParkingBoy(parkingBoy1Id);
+        ParkingBoy parkingBoy2 = new ParkingBoy(parkingBoy2Id);
         ParkingLotManager parkingLotManager = new ParkingLotManager();
         //when
         parkingLotManager.addParkingBoyToManagementList(parkingBoy1);

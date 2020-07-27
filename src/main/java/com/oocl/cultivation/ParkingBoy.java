@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingBoy {
+    private final int id;
 
     protected   List<ParkingLot> allParkingLot=new ArrayList<>();
 
@@ -11,11 +12,12 @@ public class ParkingBoy {
         return allParkingLot;
     }
 
-    public ParkingBoy() {
+    public ParkingBoy(int id) {
         ParkingLot parkingLot1=new ParkingLot(5);
         ParkingLot parkingLot2=new ParkingLot(10);
         allParkingLot.add(parkingLot1);
         allParkingLot.add(parkingLot2);
+        this.id=id;
     }
 
     public Ticket park(Car car, Customer customer) {

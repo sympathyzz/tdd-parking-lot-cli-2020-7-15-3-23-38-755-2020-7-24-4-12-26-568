@@ -4,6 +4,11 @@ import java.util.*;
 
 public class SmartParkingBoy extends ParkingBoy{
     private Map<Integer,Integer> freeParkingLotNumberMap=new HashMap<>();
+
+    public SmartParkingBoy(int id) {
+        super(id);
+    }
+
     public Ticket park(Car car, Customer customer) {
         for(int i=0;i<allParkingLot.size();i++){
             int freeParkingLotNumber=allParkingLot.get(i).getCapacity()-allParkingLot.get(i).getParkingRooms().size();

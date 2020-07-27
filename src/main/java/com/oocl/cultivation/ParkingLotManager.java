@@ -10,11 +10,15 @@ public class ParkingLotManager {
         managementList.add(parkingBoy);
     }
 
-    public ParkingLot getParkingLot() {
-        return parkingLot;
-    }
 
     public List<ParkingBoy> getManagementList() {
        return managementList;
     }
+
+    public Ticket specifyParkingBoyToPark(ParkingBoy parkingBoy, Car car, Customer customer) {
+        return parkingBoy.park(car,customer);
+    }
+
+
+
 }
