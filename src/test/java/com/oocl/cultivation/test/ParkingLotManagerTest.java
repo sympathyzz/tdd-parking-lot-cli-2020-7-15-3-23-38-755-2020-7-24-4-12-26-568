@@ -51,4 +51,17 @@ public class ParkingLotManagerTest {
         assertEquals(car,fetchedCar);
     }
 
+    @Test
+    void should_return_a_ticket_when_parking_manager_park_given_his_own_parking_lots (){
+        //given
+        Car car=new Car();
+        Customer customer=new Customer(car);
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLotManager parkingLotManager = new ParkingLotManager();
+        //when
+        Ticket ticket=parkingLotManager.park(car,customer);
+        //then
+        assertNotNull(ticket);
+    }
+
 }
