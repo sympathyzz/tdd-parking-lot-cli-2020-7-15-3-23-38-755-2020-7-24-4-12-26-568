@@ -26,11 +26,10 @@ public class ParkingBoyTest {
     @Test
     void should_return_ticket_when_parkCar_given_car() {
         //given
-        int parkingBoyId=1;
         Car car=new Car();
         Customer customer=new Customer(car);
         //when
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         Ticket ticket=parkingBoy.park(car,customer);
         //then
         assertNotNull(ticket);
@@ -39,10 +38,9 @@ public class ParkingBoyTest {
     @Test
     void should_return_car_when_fetch_given_parking_ticket() {
         //given
-        int parkingBoyId=1;
         Car car=new Car();
         Customer customer=new Customer(car);
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         Ticket ticket=parkingBoy.park(car,customer);
         //when
         Car fetchedCarr=parkingBoy.fetch(ticket,customer);
@@ -53,10 +51,9 @@ public class ParkingBoyTest {
     @Test
     void should_return_correspond_car_when_fetch_given_correspond_ticket() {
         //given
-        int parkingBoyId=1;
         Car car1 = new Car();
         Customer customer1=new Customer(car1);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy = new ParkingBoy();
         Ticket ticket1 = parkingBoy.park(car1,customer1);
         Car car2 = new Car();
         Customer customer2=new Customer(car2);
@@ -73,10 +70,9 @@ public class ParkingBoyTest {
     @Test
     void should_return_null_when_fetch_given_wrong_ticket() {
         //given
-        int parkingBoyId=1;
         Customer customer=new Customer(new Car());
         Ticket ticket=new Ticket(null);
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         //when
         Car fetchedCar=parkingBoy.fetch(ticket,customer);
         //then
@@ -86,10 +82,9 @@ public class ParkingBoyTest {
     @Test
     void should_return_null_when_fetch_given_used_ticket() {
         //given
-        int parkingBoyId=1;
         Car car=new Car();
         Customer customer=new Customer(car);
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         Ticket ticket=parkingBoy.park(car,customer);
         parkingBoy.fetch(ticket,customer);
         //when
@@ -101,8 +96,7 @@ public class ParkingBoyTest {
     @Test
     void should_return_null_when_park_given_no_position() {
         //given
-        int parkingBoyId=1;
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         for(int i=0;i<20;i++){
             Car car=new Car();
             parkingBoy.park(car,new Customer(car));
@@ -118,10 +112,9 @@ public class ParkingBoyTest {
     @Test
     void should_get_unrecognized_message_when_fetch_given_no_ticket_from_parking_boy() {
         //given
-        int parkingBoyId=1;
         Car car=new Car();
         Customer customer=new Customer(car);
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         parkingBoy.park(car,customer);
         customer.setTicket(null);
         //when
@@ -133,10 +126,9 @@ public class ParkingBoyTest {
     @Test
     void should_get_unrecognized_message_when_fetch_given_used_ticket() {
         //given
-        int parkingBoyId=1;
         Car car=new Car();
         Customer customer=new Customer(car);
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         Ticket ticket=parkingBoy.park(car,customer);
         parkingBoy.fetch(ticket,customer);
         //when
@@ -148,10 +140,9 @@ public class ParkingBoyTest {
     @Test
     void should_get_please_provide_ticket_message_when_fetch_given_no_ticket_by_customer() {
         //given
-        int parkingBoyId=1;
         Car car=new Car();
         Customer customer=new Customer(car);
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         parkingBoy.park(car,customer);
         Ticket ticket=null;
         //when
@@ -163,8 +154,7 @@ public class ParkingBoyTest {
     @Test
     void should_get_not_enough_position_message_when_park_given_no_position() {
         //given
-        int parkingBoyId=1;
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         for(int i=0;i<20;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
@@ -181,8 +171,7 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_full_second_parkinglot_has_1_car_when_park_given_6_cars() {
         //given
-        int parkingBoyId=1;
-        ParkingBoy parkingBoy=new ParkingBoy(parkingBoyId);
+        ParkingBoy parkingBoy=new ParkingBoy();
         for(int i=0;i<6;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
@@ -197,8 +186,7 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_1_car__second_parkinglot_has_6_cars_when_park_given_7_cars() {
         //given
-        int parkingBoyId=1;
-        SmartParkingBoy smartParkingBoy=new SmartParkingBoy(parkingBoyId);
+        SmartParkingBoy smartParkingBoy=new SmartParkingBoy();
         for(int i=0;i<7;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
@@ -213,8 +201,7 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_1_car__second_parkinglot_has_1_car_when_park_given_2_cars() {
         //given
-        int parkingBoyId=1;
-        SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy(parkingBoyId);
+        SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy();
         for(int i=0;i<2;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
@@ -229,8 +216,7 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_1_car__second_parkinglot_has_2_car_when_park_given_3_cars() {
         //given
-        int parkingBoyId=1;
-        SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy(parkingBoyId);
+        SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy();
         for(int i=0;i<3;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
@@ -245,8 +231,7 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_2_car__second_parkinglot_has_3_car_when_park_given_5_cars() {
         //given
-        int parkingBoyId=1;
-        SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy(parkingBoyId);
+        SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy();
         for(int i=0;i<5;i++){
             Car car=new Car();
             Customer customer=new Customer(car);

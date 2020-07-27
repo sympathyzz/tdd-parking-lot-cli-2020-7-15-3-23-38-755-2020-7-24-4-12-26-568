@@ -6,10 +6,6 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     private Map<Integer,Double> availablePositionRateMap=new HashMap<>();
 
-    public SuperSmartParkingBoy(int id) {
-        super(id);
-    }
-
     public Ticket park(Car car, Customer customer) {
         for(int i=0;i<allParkingLot.size();i++){
             double freeParkingLotNumber=allParkingLot.get(i).getCapacity()-allParkingLot.get(i).getParkingRooms().size();

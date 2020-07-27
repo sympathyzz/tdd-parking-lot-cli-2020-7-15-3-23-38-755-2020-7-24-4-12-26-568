@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingBoy {
-    private final int id;
 
     protected   List<ParkingLot> allParkingLot=new ArrayList<>();
 
@@ -12,12 +11,11 @@ public class ParkingBoy {
         return allParkingLot;
     }
 
-    public ParkingBoy(int id) {
+    public ParkingBoy() {
         ParkingLot parkingLot1=new ParkingLot(5);
         ParkingLot parkingLot2=new ParkingLot(10);
         allParkingLot.add(parkingLot1);
         allParkingLot.add(parkingLot2);
-        this.id=id;
     }
 
     public Ticket park(Car car, Customer customer) {
@@ -48,11 +46,11 @@ public class ParkingBoy {
     }
 
     protected void sendMessage(Ticket ticket,Customer customer) {
-        if(customer.getCar().getIsParking()){
-            if(customer.getTicket()!=null){
-                if(ticket==null){
-                    System.out.print("Please provide your parking ticket.\n");
-                }
+                    if(customer.getCar().getIsParking()){
+                        if(customer.getTicket()!=null){
+                            if(ticket==null){
+                                System.out.print("Please provide your parking ticket.\n");
+                            }
             }else {
                 System.out.print("Unrecognized parking ticket.\n");
             }
