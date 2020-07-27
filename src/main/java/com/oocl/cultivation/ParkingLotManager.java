@@ -20,5 +20,7 @@ public class ParkingLotManager {
     }
 
 
-
+    public Car specifyParkingBoyToFetch(ParkingBoy parkingBoy, Ticket ticket, Customer customer) {
+        return parkingBoy.fetch(ticket,customer);
+    }
 }
