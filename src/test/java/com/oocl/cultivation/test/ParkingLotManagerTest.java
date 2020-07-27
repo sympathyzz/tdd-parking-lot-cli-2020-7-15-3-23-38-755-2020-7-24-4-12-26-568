@@ -4,6 +4,8 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLotManager;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class ParkingLotManagerTest {
     @Test
     void management_list_size_is_2_when_add_parking_boy_given_2_parking_boy(){
