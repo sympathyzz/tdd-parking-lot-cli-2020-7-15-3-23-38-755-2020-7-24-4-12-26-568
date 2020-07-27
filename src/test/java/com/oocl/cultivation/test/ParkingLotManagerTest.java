@@ -36,4 +36,19 @@ public class ParkingLotManagerTest {
         assertNotNull(ticket);
     }
 
+    @Test
+    void should_return_the_same_car_when_specify_parking_boy_fetch_given_specified_parking_boy_and_available_ticket(){
+        //given
+        int parkingBoyId=1;
+        Car car=new Car();
+        Customer customer=new Customer(car);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingBoyId);
+        ParkingLotManager parkingLotManager = new ParkingLotManager();
+        Ticket ticket=parkingLotManager.specifyParkingBoyToPark(parkingBoy,car,customer);
+        //when
+        Car fetchedCar=parkingLotManager.specifyParkingBoyToFetch(parkingBoy,ticket,customer);
+        //then
+        assertEquals(car,fetchedCar);
+    }
+
 }
