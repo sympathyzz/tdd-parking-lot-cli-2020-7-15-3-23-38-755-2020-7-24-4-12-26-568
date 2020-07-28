@@ -46,11 +46,11 @@ public class ParkingBoy {
     }
 
     protected void sendMessage(Ticket ticket,Customer customer) {
-        if(customer.getCar().getIsParking()){
-            if(customer.getTicket()!=null){
-                if(ticket==null){
-                    System.out.print("Please provide your parking ticket.\n");
-                }
+                    if(customer.getCar().getIsParking()){
+                        if(customer.getTicket()!=null){
+                            if(ticket==null){
+                                System.out.print("Please provide your parking ticket.\n");
+                            }
             }else {
                 System.out.print("Unrecognized parking ticket.\n");
             }

@@ -171,11 +171,11 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_full_second_parkinglot_has_1_car_when_park_given_6_cars() {
         //given
-        //when
         ParkingBoy parkingBoy=new ParkingBoy();
         for(int i=0;i<6;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
+            //when
             parkingBoy.park(car,customer);
         }
         //then
@@ -186,11 +186,11 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_1_car__second_parkinglot_has_6_cars_when_park_given_7_cars() {
         //given
-        //when
         SmartParkingBoy smartParkingBoy=new SmartParkingBoy();
         for(int i=0;i<7;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
+            //when
             smartParkingBoy.park(car,customer);
         }
         //then
@@ -201,11 +201,11 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_1_car__second_parkinglot_has_1_car_when_park_given_2_cars() {
         //given
-        //when
         SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy();
         for(int i=0;i<2;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
+            //when
             superSmartParkingBoy.park(car,customer);
         }
         //then
@@ -216,11 +216,11 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_1_car__second_parkinglot_has_2_car_when_park_given_3_cars() {
         //given
-        //when
         SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy();
         for(int i=0;i<3;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
+            //when
             superSmartParkingBoy.park(car,customer);
         }
         //then
@@ -231,11 +231,11 @@ public class ParkingBoyTest {
     @Test
     void should_first_parkinglot_has_2_car__second_parkinglot_has_3_car_when_park_given_5_cars() {
         //given
-        //when
         SuperSmartParkingBoy superSmartParkingBoy=new SuperSmartParkingBoy();
         for(int i=0;i<5;i++){
             Car car=new Car();
             Customer customer=new Customer(car);
+            //when
             superSmartParkingBoy.park(car,customer);
         }
         //then
